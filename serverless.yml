@@ -1,0 +1,27 @@
+org: userube
+app: backendtest
+service: backendtest
+
+frameworkVersion: '1.83.3'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: '20201221'
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /
+          method: get
+  signup:
+    handler: handler.signup
+    events:
+      - httpApi:
+          path: /signup
+          method: post
+
+plugins:
+  - serverless-plugin-typescript
